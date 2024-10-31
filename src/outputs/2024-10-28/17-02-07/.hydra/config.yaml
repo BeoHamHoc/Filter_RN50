@@ -1,0 +1,9 @@
+mode: image
+epochs: 1
+learning_rate: 0.0001
+batch_size: 32
+num_workers: 6
+test_size: 0.2
+model_path: /home/phong/PycharmProjects/Filter_RN50/checkpoint/trainRS50_120.pth
+image_path: test3.jpg
+video_path: test1.mp4
