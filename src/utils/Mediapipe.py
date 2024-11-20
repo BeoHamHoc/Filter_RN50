@@ -24,7 +24,7 @@ def readCSV(file):
     return landmarks, ids, coordinates
 
 
-def nhan_dien_khuon_mat(source):
+def nhan_dien_khuon_mat(source,path=''):
     mp_face_mesh = mp.solutions.face_mesh
     mp_drawing = mp.solutions.drawing_utils
     drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
@@ -36,11 +36,11 @@ def nhan_dien_khuon_mat(source):
     if source == "webcam":
         cap = cv2.VideoCapture(0)
     elif source == "video":
-        video_path = input("Nhập đường dẫn đến video: ")
-        cap = cv2.VideoCapture(video_path)
+        # video_path = input("Nhập đường dẫn đến video: ")
+        cap = cv2.VideoCapture(path)
     elif source == "image":
-        image_path = input("Nhập đường dẫn đến ảnh: ")
-        image = cv2.imread(image_path)
+        # image_path = input("Nhập đường dẫn đến ảnh: ")
+        image = cv2.imread(path)
         image_processed = True  # Đánh dấu đã xử lý ảnh ngay từ đầu
 
     with mp_face_mesh.FaceMesh(
@@ -139,10 +139,8 @@ def nhan_dien_khuon_mat(source):
         cap.release()
     cv2.destroyAllWindows()
 
-mask_filenames = ['../../../data/dataFilter/batman_1.png', '../../../data/dataFilter/batman_2.png', \
-                  '../../../data/dataFilter/iron_man_2.png', '../../../data/dataFilter/none.png']
-csv_filenames = ['../../../data/dataFilter/batman_1.csv', '../../../data/dataFilter/batman_2.csv', \
-                 '../../../data/dataFilter/iron_man_2.csv']
+mask_filenames = ['/home/phong/PycharmProjects/Filter_RN50/data/dataFilter/batman_1.png']
+csv_filenames = ['/home/phong/PycharmProjects/Filter_RN50/data/dataFilter/batman_1.csv']
 landmarks, ids, mask_coordinates = readCSV(csv_filenames[0])
 height, width = 480, 640
 mask_width = 70

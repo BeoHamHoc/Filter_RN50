@@ -1,5 +1,5 @@
-mode: "realtime"  # Chọn chế độ: train, image, video, realtime
-
+mode: "image"  # Chọn chế độ: train, image, video, realtime
+filter: True
 # Tham số cho chế độ train
 epochs: 1
 learning_rate: 0.0001
@@ -11,5 +11,5 @@ test_size: 0.2
 model_path: /home/phong/PycharmProjects/Filter_RN50/checkpoint/test.pth
 
 # Đường dẫn đến ảnh hoặc video
-image_path: /home/phong/PycharmProjects/Filter_RN50/test3.jpg
-video_path: /home/phong/PycharmProjects/Filter_RN50/test1.mp4
+image_path: /home/phong/PycharmProjects/Filter_RN50/Test/Image/test12.jpg
+video_path: /home/phong/PycharmProjects/Filter_RN50/Test/Video/test1.mp4

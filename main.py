@@ -1,6 +1,6 @@
 from src.dataloaders.face_landmarks_dataset import FaceLandmarksDataset, Transforms
 from src.utils.utils import *
-
+from src.utils.Mediapipe import *
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -34,11 +34,20 @@ def main(cfg: DictConfig) -> None:
     if cfg.mode == "train":
         train_test(model, cfg.epochs, cfg.learning_rate, train_loader, test_loader, model, device)
     elif cfg.mode == "image":
-        detect_and_draw_landmarks_image(cfg.image_path, model, device)
+        if cfg.filter:
+            nhan_dien_khuon_mat("image",cfg.image_path)
+        else:
+            detect_and_draw_landmarks_image(cfg.image_path, model, device)
     elif cfg.mode == "video":
-        detect_and_draw_landmarks_video(cfg.video_path, model, device)
+        if cfg.filter:
+            nhan_dien_khuon_mat("video",cfg.video_path)
+        else:
+            detect_and_draw_landmarks_video(cfg.video_path, model, device)
     elif cfg.mode == "realtime":
-        detect_and_draw_landmarks_realtime(model, device)
+        if cfg.filter:
+            nhan_dien_khuon_mat("webcam")
+        else:
+            detect_and_draw_landmarks_realtime(model, device)
 
 
 if __name__ == "__main__":
